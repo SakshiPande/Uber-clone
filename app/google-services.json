@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "129101332010",
+    "firebase_url": "https://uber-e870c.firebaseio.com",
+    "project_id": "uber-e870c",
+    "storage_bucket": "uber-e870c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129101332010:android:1900b9afa36ad9e5",
+        "android_client_info": {
+          "package_name": "uber.com.uber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129101332010-fn1e75mlmuu1o45tf808rrdbnh0kel9a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uber.com.uber",
+            "certificate_hash": "215b03ae3fa0d4f25776d4833cc5c578181b8995"
+          }
+        },
+        {
+          "client_id": "129101332010-dv07b2r3l4f03g8biqfan0c11dvgjrjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAghaMeNsMIJMxl9YhnsAPKuDy0xZaV7Ng"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129101332010-dv07b2r3l4f03g8biqfan0c11dvgjrjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

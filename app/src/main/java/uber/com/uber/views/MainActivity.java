@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import dmax.dialog.SpotsDialog;
 import uber.com.uber.R;
 import uber.com.uber.model.User;
 import uber.com.uber.utils.CommonUtils;
@@ -122,13 +123,15 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
     private void showSignInUserDialog() {
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("SIGN IN");
         LayoutInflater inflater = LayoutInflater.from(this);
         View signin_layout = inflater.inflate(R.layout.layout_singin, null);
 
         mMaterialEdtEmail = signin_layout.findViewById(R.id.edtEmail);
         mMaterialEdtPassword = signin_layout.findViewById(R.id.edtPassword);
+
 
 
 
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
 
+                        btnSignIn.setEnabled(false);
                         validateSignInInput();
                     }
                 }
@@ -231,6 +235,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void registerUser() {
 
+        final android.app.AlertDialog watingDialog= new SpotsDialog(this);
+        watingDialog.show();
+
         firebaseAuth.createUserWithEmailAndPassword(mMaterialEdtEmail.getText().toString(), mMaterialEdtPassword.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -247,6 +254,8 @@ public class MainActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+                                        watingDialog.dismiss();
+
                                         CommonUtils.showSnackBarNoAction(mRootLayout, "Registered Successfully");
 
                                     }
@@ -255,6 +264,8 @@ public class MainActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        watingDialog.dismiss();
+
                                         CommonUtils.showSnackBarNoAction(mRootLayout, "Registration Failed" + e.getMessage());
 
                                     }
@@ -265,6 +276,8 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        watingDialog.dismiss();
+
                         CommonUtils.showSnackBarNoAction(mRootLayout, "Registration Failed" + e.getMessage());
 
                     }
@@ -274,10 +287,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void signInUser() {
 
+        final android.app.AlertDialog watingDialog= new SpotsDialog(this);
+         watingDialog.show();
+
         firebaseAuth.signInWithEmailAndPassword(mMaterialEdtEmail.getText().toString(),mMaterialEdtPassword.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                        watingDialog.dismiss();
+
                         startActivity(new Intent(MainActivity.this,WelcomeActivity.class));
                         finish();
                     }
@@ -285,6 +303,8 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        watingDialog.dismiss();
+
                         CommonUtils.showSnackBarNoAction(mRootLayout, "Sign In Failed" + e.getMessage());
 
                     }
@@ -293,6 +313,8 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        watingDialog.dismiss();
+                        btnSignIn.setEnabled(true);
                         CommonUtils.showSnackBarNoAction(mRootLayout, "Sign In Failed" + e.getMessage());
 
                     }

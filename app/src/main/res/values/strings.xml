@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Uber</string>
     <string name="title_activity_welcome">Map</string>
+    <string name="directions_api_key">AIzaSyCxyQhG3x0QNi7zFPDYjGnxqs0cIkHnAS8</string>
 </resources>
